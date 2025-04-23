@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chronologie des Crises Bitcoin (2009-2020)</title>
+    <style>
+        :root {
+            --bitcoin-orange: #f7931a;
+            --ethereum-blue: #627eea;
+            --background-color: #000;
+            --text-color: #fff;
+            --section-padding: 100px 0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .timeline-container {
+            position: relative;
+            width: 100%;
+        }
+        
+        .timeline-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: var(--section-padding);
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .timeline-section.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .year-marker {
+            position: fixed;
+            top: 50px;
+            right: 50px;
+            font-size: 10rem;
+            font-weight: bold;
+            opacity: 0.2;
+            z-index: -1;
+        }
+        
+        .timeline-content {
+            max-width: 1200px;
+            width: 90%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+        }
+        
+        .timeline-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .timeline-header h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--bitcoin-orange);
+        }
+        
+        .timeline-header p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .crisis-card {
+            background-color: rgba(20, 20, 20, 0.8);
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 50px;
+            width: 100%;
+            max-width: 900px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            display: flex;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .crisis-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background-color: var(--bitcoin-orange);
+        }
+        
+        .crisis-image {
+            flex: 0 0 40%;
+            margin-right: 30px;
+            position: relative;
+            border: 10px solid #222;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+        
+        .crisis-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+        
+        .crisis-image:hover img {
+            transform: scale(1.05);
+        }
+        
+        .crisis-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0) 70%, rgba(0,0,0,0.7) 100%);
+        }
+        
+        .crisis-details {
+            flex: 1;
+        }
+        
+        .crisis-title {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: var(--bitcoin-orange);
+        }
+        
+        .crisis-date {
+            font-size: 1rem;
+            color: #aaa;
+            margin-bottom: 15px;
+            display: inline-block;
+            padding: 5px 10px;
+            background-color: rgba(247, 147, 26, 0.2);
+            border-radius: 5px;
+        }
+        
+        .crisis-type {
+            display: inline-block;
+            padding: 5px 10px;
+            margin-left: 10px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+        
+        .crisis-severity {
+            margin: 15px 0;
+            display: flex;
+            align-items: center;
+        }
+        
+        .severity-label {
+            margin-right: 10px;
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+        
+        .severity-bar {
+            height: 10px;
+            background-color: #333;
+            border-radius: 5px;
+            flex: 1;
+            overflow: hidden;
+        }
+        
+        .severity-fill {
+            height: 100%;
+            background-color: var(--bitcoin-orange);
+        }
+        
+        .crisis-description {
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+        
+        .crisis-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .meta-item {
+            padding: 5px 10px;
+            background-color: #333;
+            border-radius: 5px;
+            font-size: 0.9rem;
+        }
+        
+        .timeline-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background-color: #333;
+            z-index: 100;
+        }
+        
+        .progress-fill {
+            width: 100%;
+            background-color: var(--bitcoin-orange);
+            height: 0%;
+            transition: height 0.1s linear;
+        }
+        
+        .timeline-nav {
+            position: fixed;
+            top: 50%;
+            right: 30px;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 100;
+        }
+        
+        .nav-dot {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background-color: #333;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-dot.active {
+            background-color: var(--bitcoin-orange);
+            transform: scale(1.3);
+        }
+        
+        .nav-dot:hover {
+            background-color: #555;
+        }
+        
+        .dutch-painting-frame {
+            position: relative;
+            padding: 20px;
+            background-color: #3a2a18;
+            border: 15px solid #5a3a20;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+        }
+        
+        .dutch-painting-frame::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border: 2px solid #8a6a40;
+            pointer-events: none;
+        }
+        
+        .intro-section {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            background: radial-gradient(circle, #1a1a1a 0%, #000 100%);
+        }
+        
+        .intro-title {
+            font-size: 5rem;
+            margin-bottom: 30px;
+            color: var(--bitcoin-orange);
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+        }
+        
+        .intro-subtitle {
+            font-size: 1.5rem;
+            max-width: 800px;
+            margin-bottom: 50px;
+            color: #ccc;
+        }
+        
+        .scroll-indicator {
+            position: absolute;
+            bottom: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+        
+        .scroll-indicator svg {
+            width: 40px;
+            height: 40px;
+            fill: #fff;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0) translateX(-50%);
+            }
+            40% {
+                transform: translateY(-20px) translateX(-50%);
+            }
+            60% {
+                transform: translateY(-10px) translateX(-50%);
+            }
+        }
+        
+        .inflation-type { background-color: #e74c3c; }
+        .netsplit-type { background-color: #3498db; }
+        .dos-type { background-color: #2ecc71; }
+        .theft-type { background-color: #9b59b6; }
+        .exposure-type { background-color: #f39c12; }
+        .fake-confirmation-type { background-color: #1abc9c; }
+        .unknown-type { background-color: #7f8c8d; }
+        
+        @media (max-width: 768px) {
+            .crisis-card {
+                flex-direction: column;
+            }
+            
+            .crisis-image {
+                margin-right: 0;
+                margin-bottom: 20px;
+                width: 100%;
+            }
+            
+            .year-marker {
+                font-size: 5rem;
+                top: 20px;
+                right: 20px;
+            }
+            
+            .timeline-nav {
+                right: 10px;
+            }
+            
+            .intro-title {
+                font-size: 3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="timeline-progress">
+        <div class="progress-fill" id="progress-bar"></div>
+    </div>
+    
+    <div class="timeline-nav" id="timeline-nav">
+        <!-- Navigation dots will be added dynamically -->
+    </div>
+    
+    <section class="intro-section">
+        <h1 class="intro-title">Chronologie des Crises Bitcoin</h1>
+        <p class="intro-subtitle">Une exploration interactive des 41 crises qui ont façonné l'histoire de Bitcoin de 2009 à 2020, révélant la gouvernance discrète des cryptomonnaies.</p>
+        <div class="scroll-indicator">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M12 21l-12-18h24z"/>
+            </svg>
+        </div>
+    </section>
+    
+    <div class="timeline-container" id="timeline-container">
+        <!-- Timeline sections will be added dynamically -->
+    </div>
+
+    <script>
+        // Données des crises Bitcoin
+        const crises = [
+            {
+                id: 1,
+                date: "2009-01-03",
+                title: "Genesis Block - Lancement du protocole Bitcoin",
+                description: "Premier bloc de la blockchain Bitcoin, créé par Satoshi Nakamoto. Ce bloc fondateur contient un message faisant référence à la crise financière de 2008 : 'The Times 03/Jan/2009 Chancellor on brink of second bailout for banks'.",
+                type: "Unknown",
+                severity: 5,
+                is_protocol_change: false,
+                painting: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Rembrandt_-_The_Parable_of_the_Rich_Fool.jpg/800px-Rembrandt_-_The_Parable_of_the_Rich_Fool.jpg",
+                painting_title: "The Money Changer (1627)",
+                painting_artist: "Rembrandt van Rijn",
+                year: 2009
+            },
+            {
+                id: 2,
+                date: "2010-07-28",
+                title: "#2/ CVE-2010-5137",
+                description: "Type de faille : DOS ; OP_LSHIFT crash. Cette vulnérabilité permettait à un attaquant de provoquer un crash du logiciel Bitcoin en utilisant l'opérateur OP_LSHIFT de manière malveillante.",
+                type: "DOS",
+                severity: 6,
+                crisis_number: 2,
+                cve: "CVE-2010-5137",
+                is_protocol_change: false,
+                painting: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Quentin_Massys_-_A_Moneylender_and_his_Wife_-_WGA14281.jpg/800px-Quentin_Massys_-_A_Moneylender_and_his_Wife_-_WGA14281.jpg",
+                painting_title: "The Moneylender and his Wife (1514)",
+                painting_artist: "Quentin Massys",
+                year: 2010
+            },
+            {
+                id: 3,
+                date: "2010-07-28",
+                title: "#1/ CVE-2010-5141",
+                description: "Type de faille : Theft ; OP_RETURN could be used to spend any output. Cette vulnérabilité critique permettait à un attaquant de dépenser n'importe quelle sortie de transaction, compromettant ainsi la sécurité fondamentale du système.",
+                type: "Theft",
+                severity: 9,
+                crisis_number: 1,
+                cve: "CVE-2010-5141",
+                is_protocol_change: false,
+                painting: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Rembrandt_Christ_Driving_the_Money_Changers_from_the_Temple.jpg/800px-Rembrandt_Christ_Driving_the_Money_Changers_from_the_Temple.jpg",
+                painting_title: "Christ Driving the Money Changers from the Temple (1635)",
+                painting_artist: "Rembrandt van Rijn",
+                year: 2010
+            },
+            {
+                id: 5,
+                date: "2010-08-15",
+                title: "#4/ CVE-2010-5139",
+                description: "Type de faille : Inflation + Netsplit ; Combined output overflow. Cette vulnérabilité a permis la création de 184 milliards de bitcoins supplémentaires, violant ainsi la règle fondamentale de l'offre limitée de Bitcoin.",
+                type: "Inflation",
+                severity: 10,
+                crisis_number: 4,
+                cve: "CVE-2010-5139",
+                is_protocol_change: false,
+                painting: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Pieter_de_Hooch_-_Interior_with_a_Woman_Weighing_Gold_-_WGA11703.jpg/800px-Pieter_de_Hooch_-_Interior_with_a_Woman_Weighing_Gold_-_WGA11703.jpg",
+                painting_title: "The Gold Weigher (1664)",
+                painting_artist: "Pieter de Hooch",
+                year: 2010
+            },
+            {
+                id: 8,
+                date: "2012-03-07",
+                title: "#7/ CVE-2012-1909",
+                description: "Type de faille : Netsplit ; Transaction overwriting. Cette vulnérabilité permettait à un attaquant de réécrire des transactions, créant ainsi une divergence dans la blockchain et compromettant le consensus du réseau.",
+                type: "Netsplit",
+                severity: 8,
+                crisis_number: 7,
+                cve: "CVE-2012-1909",
+                is_protocol_change: false,
+                painting: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Marinus_Claesz._van_Reymerswaele_002.jpg/800px-Marinus_Claesz._van_Reymerswaele_002.jpg",
+                painting_title: "The Tax Collector (1542)",
+                painting_artist: "Marinus van Reymerswaele",
+                year: 2012
+            },
+            {
+                id: 22,
+                date: "2013-03-20",
+                title: "BIP 50",
+                description: "Netsplit ; Inconsistent BDB lock limit interactions. Cette crise a provoqué une scission temporaire de la blockchain en mars 2013, nécessitant une coordination rapide entre les mineurs pour résoudre le problème.",
+                type: "Netsplit",
+                severity: 8,
+                bip: 50,
+                is_protocol_change: true,
+                painting: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Marinus_Claesz._van_Reymerswaele_-_The_Money_Changer_and_His_Wife_-_Google_Art_Project.jpg/800px-Marinus_Claesz._van_Reymerswaele_-_The_Money_Changer_and_His_Wife_-_Google_Art_Project.jpg",
+                painting_title: "The Money Changer and his Wife (1538)",
+                painting_artist: "Marinus van Reymerswaele",
+                year: 2013
+            },
+            {
+                id: 37,
+                date: "2018-09-17",
+                title: "#35/ CVE-2018-17144",
+                description: "Type de faille : Inflation ; Missing check for duplicate inputs. Cette vulnérabilité critique aurait pu permettre à un attaquant de créer des bitcoins à partir de rien en utilisant des entrées dupliquées dans une transaction.",
+                type: "Inflation",
+                severity: 10,
+                crisis_number: 35,
+                cve: "CVE-2018-17144",
+                is_protocol_change: false,
+                painting: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Quinten_Massijs_%28I%29_-_The_Tax_Collectors_-_WGA14271.jpg/800px-Quinten_Massijs_%28I%29_-_The_Tax_Collectors_-_WGA14271.jpg",
+                painting_title: "The Gold Weigher (1520)",
+                painting_artist: "Quentin Massys",
+                year: 2018
+            }
+        ];
+
+        // Fonction pour créer les sections de la chronologie
+        function createTimelineSections() {
+            const container = document.getElementById('timeline-container');
+            const nav = document.getElementById('timeline-nav');
+            
+            // Trier les crises par date
+            const sortedCrises = [...crises].sort((a, b) => new Date(a.date) - new Date(b.date));
+            
+            // Créer une section pour chaque crise
+            sortedCrises.forEach((crisis, index) => {
+                // Créer la section
+                const section = document.createElement('section');
+                section.className = 'timeline-section';
+                section.id = `crisis-${crisis.id}`;
+                section.setAttribute('data-year', crisis.year);
+                
+                // Créer le marqueur d'année
+                const yearMarker = document.createElement('div');
+                yearMarker.className = 'year-marker';
+                yearMarker.textContent = crisis.year;
+                
+                // Créer le contenu
+                const content = document.createElement('div');
+                content.className = 'timeline-content';
+                
+                // Créer la carte de crise
+                const card = document.createElement('div');
+                card.className = 'crisis-card';
+                
+                // Créer l'image avec cadre de peinture hollandaise
+                const imageContainer = document.createElement('div');
+                imageContainer.className = 'crisis-image dutch-painting-frame';
+                
+                const image = document.createElement('img');
+                image.src = crisis.painting;
+                image.alt = crisis.painting_title;
+                image.title = `${crisis.painting_title} par ${crisis.painting_artist}`;
+                
+                imageContainer.appendChild(image);
+                
+                // Créer les détails
+                const details = document.createElement('div');
+                details.className = 'crisis-details';
+                
+                const title = document.createElement('h2');
+                title.className = 'crisis-title';
+                title.textContent = crisis.title;
+                
+                const date = document.createElement('span');
+                date.className = 'crisis-date';
+                date.textContent = formatDate(crisis.date);
+                
+                const type = document.createElement('span');
+                type.className = `crisis-type ${crisis.type.toLowerCase().replace(/\s+/g, '-')}-type`;
+                type.textContent = crisis.type;
+                
+                const severityContainer = document.createElement('div');
+                severityContainer.className = 'crisis-severity';
+                
+                const severityLabel = document.createElement('span');
+                severityLabel.className = 'severity-label';
+                severityLabel.textContent = `Sévérité: ${crisis.severity}/10`;
+                
+                const severityBar = document.createElement('div');
+                severityBar.className = 'severity-bar';
+                
+                const severityFill = document.createElement('div');
+                severityFill.className = 'severity-fill';
+                severityFill.style.width = `${crisis.severity * 10}%`;
+                
+                severityBar.appendChild(severityFill);
+                severityContainer.appendChild(severityLabel);
+                severityContainer.appendChild(severityBar);
+                
+                const description = document.createElement('p');
+                description.className = 'crisis-description';
+                description.textContent = crisis.description;
+                
+                const meta = document.createElement('div');
+                meta.className = 'crisis-meta';
+                
+                if (crisis.cve) {
+                    const cve = document.createElement('span');
+                    cve.className = 'meta-item';
+                    cve.textContent = `CVE: ${crisis.cve}`;
+                    meta.appendChild(cve);
+                }
+                
+                if (crisis.bip) {
+                    const bip = document.createElement('span');
+                    bip.className = 'meta-item';
+                    bip.textContent = `BIP: ${crisis.bip}`;
+                    meta.appendChild(bip);
+                }
+                
+                if (crisis.is_protocol_change) {
+                    const protocolChange = document.createElement('span');
+                    protocolChange.className = 'meta-item';
+                    protocolChange.textContent = 'Changement de protocole';
+                    meta.appendChild(protocolChange);
+                }
+                
+                const paintingInfo = document.createElement('span');
+                paintingInfo.className = 'meta-item';
+                paintingInfo.textContent = `${crisis.painting_title} - ${crisis.painting_artist}`;
+                meta.appendChild(paintingInfo);
+                
+                // Assembler les détails
+                details.appendChild(title);
+                details.appendChild(date);
+                details.appendChild(type);
+                details.appendChild(severityContainer);
+                details.appendChild(description);
+                details.appendChild(meta);
+                
+                // Assembler la carte
+                card.appendChild(imageContainer);
+                card.appendChild(details);
+                
+                // Assembler le contenu
+                content.appendChild(card);
+                
+                // Assembler la section
+                section.appendChild(yearMarker);
+                section.appendChild(content);
+                
+                // Ajouter la section au conteneur
+                container.appendChild(section);
+                
+                // Ajouter un point de navigation
+                const navDot = document.createElement('div');
+                navDot.className = 'nav-dot';
+                navDot.setAttribute('data-target', `crisis-${crisis.id}`);
+                navDot.addEventListener('click', () => {
+                    document.getElementById(`crisis-${crisis.id}`).scrollIntoView({ behavior: 'smooth' });
+                });
+                nav.appendChild(navDot);
+            });
+        }
+
+        // Fonction pour formater la date
+        function formatDate(dateStr) {
+            const date = new Date(dateStr);
+            return date.toLocaleDateString('fr-FR', {
+                day: 'numeric',
+                month: 'long',
+                year: 'numeric'
+            });
+        }
+
+        // Fonction pour gérer le défilement
+        function handleScroll() {
+            const scrollPosition = window.scrollY;
+            const windowHeight = window.innerHeight;
+            const documentHeight = document.body.scrollHeight;
+            
+            // Mettre à jour la barre de progression
+            const scrollPercentage = (scrollPosition / (documentHeight - windowHeight)) * 100;
+            document.getElementById('progress-bar').style.height = `${scrollPercentage}%`;
+            
+            // Mettre à jour les sections actives
+            const sections = document.querySelectorAll('.timeline-section');
+            const navDots = document.querySelectorAll('.nav-dot');
+            
+            sections.forEach((section, index) => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.offsetHeight;
+                
+                if (scrollPosition >= sectionTop - windowHeight / 2 && 
+                    scrollPosition < sectionTop + sectionHeight - windowHeight / 2) {
+                    section.classList.add('active');
+                    navDots[index].classList.add('active');
+                    
+                    // Mettre à jour le marqueur d'année
+                    const year = section.getAttribute('data-year');
+                    document.querySelectorAll('.year-marker').forEach(marker => {
+                        marker.style.opacity = '0.1';
+                    });
+                    section.querySelector('.year-marker').style.opacity = '0.2';
+                } else {
+                    navDots[index].classList.remove('active');
+                }
+            });
+        }
+
+        // Initialiser la page
+        document.addEventListener('DOMContentLoaded', () => {
+            createTimelineSections();
+            window.addEventListener('scroll', handleScroll);
+            handleScroll(); // Appel initial pour configurer l'état
+        });
+    </script>
+</body>
+</html>
