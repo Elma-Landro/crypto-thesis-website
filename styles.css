@@ -1,0 +1,308 @@
+/* Styles spécifiques pour le site web sur les cryptomonnaies */
+
+:root {
+    --color-bitcoin: #f7931a; /* Orange Bitcoin */
+    --color-ethereum: #627eea; /* Bleu Ethereum */
+    --color-accent: #ff9e2c;
+    --color-background: #f9fafb;
+    --color-text: #333333;
+    --color-card: #ffffff;
+    --color-border: #e5e7eb;
+}
+
+/* Styles généraux */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--color-text);
+    background-color: var(--color-background);
+    line-height: 1.6;
+    position: relative;
+}
+
+/* Classes de couleurs */
+.bg-bitcoin { background-color: var(--color-bitcoin); }
+.bg-ethereum { background-color: var(--color-ethereum); }
+.bg-accent { background-color: var(--color-accent); }
+.text-bitcoin { color: var(--color-bitcoin); }
+.text-ethereum { color: var(--color-ethereum); }
+.text-accent { color: var(--color-accent); }
+
+/* Cartes et conteneurs */
+.card {
+    background-color: var(--color-card);
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    z-index: 1;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Conteneurs de visualisation */
+.timeline-container, .network-container, .concept-map-container, .crisis-visualization-container {
+    width: 100%;
+    overflow-x: auto;
+    margin: 1rem 0;
+    padding: 1rem;
+    background-color: #f9fafb;
+    border-radius: 0.5rem;
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+/* Styles pour les peintures hollandaises */
+.dutch-painting-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('images/texture.jpg');
+    opacity: 0.03;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.dutch-painting-frame {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto 2rem;
+    border: 20px solid #8b5a2b;
+    border-image: url('images/frame-border.png') 30 round;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.dutch-painting {
+    width: 100%;
+    height: 300px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+#home-painting {
+    background-image: url('images/dutch_market.jpg');
+}
+
+#chronology-painting {
+    background-image: url('images/dutch_timeline.jpg');
+}
+
+#infrastructure-painting {
+    background-image: url('images/dutch_architecture.jpg');
+}
+
+#money-painting {
+    background-image: url('images/dutch_money_changers.jpg');
+}
+
+#governance-painting {
+    background-image: url('images/dutch_council.jpg');
+}
+
+#resources-painting {
+    background-image: url('images/dutch_library.jpg');
+}
+
+.frame-caption {
+    position: absolute;
+    bottom: -40px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    font-style: italic;
+    font-size: 0.9rem;
+    color: #6b5a45;
+}
+
+/* Navigation */
+nav {
+    transition: background-color 0.3s ease;
+}
+
+.nav-link {
+    transition: color 0.3s ease;
+    position: relative;
+    padding-bottom: 3px;
+}
+
+.nav-link:after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -2px;
+    left: 0;
+    background-color: var(--color-accent);
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover:after, .nav-link.active:after {
+    width: 100%;
+}
+
+.nav-link.active {
+    color: var(--color-accent);
+    font-weight: bold;
+}
+
+/* Citations et blocs de texte */
+blockquote {
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+blockquote:before {
+    content: '"';
+    position: absolute;
+    left: 0;
+    top: -0.5rem;
+    font-size: 2rem;
+    color: var(--color-accent);
+    opacity: 0.5;
+}
+
+/* Animations et transitions */
+.section-container {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.section-container.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.hover-card {
+    transition: all 0.3s ease;
+}
+
+.hover-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9;
+}
+
+/* Styles pour les boutons de filtre */
+.filter-button {
+    padding: 0.5rem 1rem;
+    border-radius: 0.375rem;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    cursor: pointer;
+    background-color: #f3f4f6;
+    color: #4b5563;
+    border: none;
+    font-weight: 500;
+}
+
+.filter-button:hover {
+    background-color: var(--color-accent);
+    color: white;
+}
+
+.filter-button.active {
+    background-color: var(--color-bitcoin);
+    color: white;
+    font-weight: bold;
+}
+
+/* Styles pour les tooltips */
+.tooltip {
+    position: absolute;
+    background-color: white;
+    border: 1px solid var(--color-border);
+    border-radius: 0.25rem;
+    padding: 0.75rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    max-width: 300px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.tooltip.visible {
+    opacity: 1;
+}
+
+/* Styles pour les visualisations interactives */
+svg {
+    max-width: 100%;
+    height: auto;
+}
+
+.timeline-event {
+    cursor: pointer;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.timeline-event:hover {
+    opacity: 0.8;
+    transform: scale(1.05);
+}
+
+.timeline-axis line, .timeline-axis path {
+    stroke: #d1d5db;
+}
+
+.timeline-axis text {
+    fill: #6b7280;
+    font-size: 12px;
+}
+
+.timeline-phase {
+    opacity: 0.2;
+    transition: opacity 0.3s ease;
+}
+
+.timeline-phase:hover {
+    opacity: 0.3;
+}
+
+.crisis-node {
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.crisis-node:hover {
+    stroke-width: 2;
+    stroke: #000;
+}
+
+.crisis-link {
+    stroke: #d1d5db;
+    stroke-width: 1;
+    opacity: 0.6;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .card {
+        padding: 1rem;
+    }
+    
+    nav ul {
+        flex-direction: column;
+        space-x-0 !important;
+        space-y: 0.5rem;
+    }
+    
+    .dutch-painting {
+        height: 200px;
+    }
+    
+    .dutch-painting-frame {
+        border-width: 10px;
+    }
+}
