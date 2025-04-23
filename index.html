@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Au-delà des codes : Cryptomonnaies</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+    <script src="script.js" defer></script>
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <header class="bg-gray-800 text-white py-6">
+        <div class="container mx-auto px-4">
+            <h1 class="text-3xl md:text-4xl font-bold">Au-delà des codes : Cryptomonnaies</h1>
+            <p class="mt-2 text-xl opacity-90">Une exploration interactive des cryptomonnaies comme infrastructures sociotechniques</p>
+        </div>
+    </header>
+
+    <nav class="bg-gray-700 text-white">
+        <div class="container mx-auto px-4 py-3">
+            <ul class="flex flex-wrap space-x-6">
+                <li><a href="#accueil" class="hover:text-accent font-bold text-accent">Accueil</a></li>
+                <li><a href="#chronologies" class="hover:text-accent">Chronologies</a></li>
+                <li><a href="#infrastructure" class="hover:text-accent">Infrastructure</a></li>
+                <li><a href="#monnaie" class="hover:text-accent">Monnaie</a></li>
+                <li><a href="#gouvernance" class="hover:text-accent">Gouvernance</a></li>
+                <li><a href="#ressources" class="hover:text-accent">Ressources</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Section Accueil -->
+        <section id="accueil" class="py-12 bg-white">
+            <div class="container mx-auto px-4">
+                <div class="max-w-4xl mx-auto">
+                    <h2 class="text-3xl font-bold mb-6 text-center text-gray-800">Bienvenue sur ce site interactif</h2>
+                    <p class="text-lg mb-6">
+                        Ce site web interactif présente les résultats d'une thèse de recherche sur les cryptomonnaies, 
+                        analysées comme des infrastructures sociotechniques complexes. Il vous permet d'explorer les 
+                        chronologies, les réseaux d'acteurs, les débats théoriques et les crises de gouvernance qui 
+                        caractérisent cet écosystème fascinant.
+                    </p>
+                    
+                    <div class="grid md:grid-cols-2 gap-6 mb-8">
+                        <div class="card">
+                            <h3 class="text-xl font-bold mb-3 text-bitcoin">Approche sociotechnique</h3>
+                            <p class="mb-4">
+                                La thèse analyse les cryptomonnaies comme des infrastructures sociotechniques complexes, 
+                                et non simplement comme des technologies ou des monnaies. Cette approche permet de comprendre 
+                                comment ces systèmes se sont développés à travers des interactions entre composants techniques et sociaux.
+                            </p>
+                        </div>
+                        
+                        <div class="card">
+                            <h3 class="text-xl font-bold mb-3 text-ethereum">Visualisations interactives</h3>
+                            <p class="mb-4">
+                                Ce site propose plusieurs visualisations interactives pour explorer les différentes dimensions 
+                                des cryptomonnaies : chronologies, réseaux d'acteurs, cartographie conceptuelle et analyse des crises.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <h3 class="text-xl font-bold mb-3 text-accent">Explorez les sections</h3>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div class="p-4 border border-gray-200 rounded">
+                                <h4 class="font-bold">Chronologies</h4>
+                                <p class="text-sm">Explorez l'évolution historique des cryptomonnaies à travers des frises chronologiques interactives.</p>
+                            </div>
+                            <div class="p-4 border border-gray-200 rounded">
+                                <h4 class="font-bold">Infrastructure</h4>
+                                <p class="text-sm">Découvrez les relations entre les différents acteurs et composants de l'écosystème des cryptomonnaies.</p>
+                            </div>
+                            <div class="p-4 border border-gray-200 rounded">
+                                <h4 class="font-bold">Monnaie</h4>
+                                <p class="text-sm">Explorez le débat sur le statut monétaire des cryptomonnaies à travers une carte conceptuelle interactive.</p>
+                            </div>
+                            <div class="p-4 border border-gray-200 rounded">
+                                <h4 class="font-bold">Gouvernance</h4>
+                                <p class="text-sm">Analysez comment les crises révèlent la gouvernance discrète des cryptomonnaies.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Chronologies -->
+        <section id="chronologies" class="py-12 bg-gray-100">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold mb-6 text-center">Chronologies interactives</h2>
+                
+                <div class="card">
+                    <p class="mb-6">
+                        Cette visualisation interactive présente les événements clés de l'histoire des cryptomonnaies,
+                        basée sur les chronologies identifiées dans la thèse. Utilisez les filtres ci-dessous pour
+                        explorer différents aspects de cette histoire.
+                    </p>
+                    
+                    <div class="flex justify-center space-x-4 mb-6">
+                        <button class="px-4 py-2 rounded-md bg-gray-800 text-white">Tous</button>
+                        <button class="px-4 py-2 rounded-md bg-gray-200">Bitcoin</button>
+                        <button class="px-4 py-2 rounded-md bg-gray-200">Ethereum</button>
+                        <button class="px-4 py-2 rounded-md bg-gray-200">Crises</button>
+                    </div>
+                    
+                    <div class="bg-white p-4 rounded-lg shadow overflow-x-auto">
+                        <div class="placeholder-viz">
+                            [Frise chronologique interactive]<br>
+                            Visualisation des événements clés de l'histoire des cryptomonnaies<br>
+                            avec filtres par catégorie et tooltips informatifs
+                        </div>
+                    </div>
+                    
+                    <div class="mt-6 text-sm text-gray-600">
+                        <p>
+                            <span class="inline-block w-3 h-3 bg-bitcoin rounded-full mr-2"></span>
+                            <strong>Bitcoin</strong> - Événements liés à l'infrastructure Bitcoin
+                        </p>
+                        <p>
+                            <span class="inline-block w-3 h-3 bg-ethereum rounded-full mr-2"></span>
+                            <strong>Ethereum</strong> - Événements liés à l'infrastructure Ethereum
+                        </p>
+                        <p>
+                            <span class="inline-block w-3 h-3 bg-accent rounded-full mr-2"></span>
+                            <strong>Crises</strong> - Crises et vulnérabilités révélant la gouvernance
+                        </p>
+                        <p>
+                            <span class="inline-block w-3 h-3 bg-green-600 rounded-full mr-2"></span>
+                            <strong>Altcoins</strong> - Autres cryptomonnaies et innovations
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-6 mb-8">
+                    <div class="card">
+                        <h3 class="text-xl font-bold mb-4">Chronologie 2: L'institutionnalisation carnavalesque</h3>
+                        <p class="mb-4">
+                            Cette chronologie, issue du Chapitre I, dévoile le développement infrastructurel de Bitcoin
+                            à travers trois phases distinctes:
+                        </p>
+                        <ul class="list-disc pl-5 mb-4">
+                            <li><strong>Phase de "preuve de concept"</strong> (2008-2012)</li>
+                            <li><strong>Phase de "péché"</strong> (2012-2013)</li>
+                            <li><strong>Phase de "maturation"</strong> (2013-présent)</li>
+                        </ul>
+                        <p class="text-sm text-gray-600">
+                            Cette chronologie illustre le caractère "carnavalesque" du développement de Bitcoin,
+                            marqué par des inversions, des transgressions et des improvisations.
+                        </p>
+                    </div>
+                    
+                    <div class="card">
+                        <h3 class="text-xl font-bold mb-4">Chronologie 4: Les crises de gouvernance</h3>
+                        <p class="mb-4">
+                            Cette chronologie, issue du Chapitre III, recense 38 crises de Bitcoin entre 2009 et 2020,
+                            révélant la gouvernance discrète des cryptomonnaies.
+                        </p>
+                        <p class="mb-4">
+                            L'exemple le plus notable est la crise "Bitcoin CVE 2018 #17144", décrite comme
+                            "le bogue Bitcoin le plus catastrophique jamais advenu".
+                        </p>
+                        <p class="text-sm text-gray-600">
+                            Ces crises révèlent comment, malgré les prétentions à l'automaticité et à l'immuabilité,
+                            les cryptomonnaies reposent sur des formes de gouvernance humaine.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Infrastructure -->
+        <section id="infrastructure" class="py-12 bg-white">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold mb-6 text-center">Infrastructure sociotechnique des cryptomonnaies</h2>
+                
+                <div class="card">
+                    <h3 class="text-2xl font-bold mb-4">Cartographie des acteurs et relations</h3>
+                    <p class="mb-6">
+                        Cette visualisation interactive représente les relations entre les différents acteurs et composants 
+                        de l'écosystème des cryptomonnaies, basée sur l'analyse sociotechnique présentée dans la thèse.
+                    </p>
+                    
+                    <div class="bg-white p-4 rounded-lg shadow overflow-auto">
+                        <div class="placeholder-viz">
+                            [Visualisation du réseau d'acteurs]<br>
+                            Représentation interactive des relations entre Bitcoin, Ethereum,<br>
+                            développeurs, mineurs, utilisateurs et autres acteurs de l'écosystème
+                        </div>
+                    </div>
+                    
+                    <div class="mt-6 text-sm text-gray-600 grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div>
+                            <span class="inline-block w-3 h-3 bg-bitcoin rounded-full mr-2"></span>
+                            <strong>Bitcoin</strong>
+                        </div>
+                        <div>
+                            <span class="inline-block w-3 h-3 bg-ethereum rounded-full mr-2"></span>
+                            <strong>Ethereum</strong>
+                        </div>
+                        <div>
+                            <span class="inline-block w-3 h-3 bg-accent rounded-full mr-2"></span>
+                            <strong>Mineurs</strong>
+                        </div>
+                        <div>
+                            <span class="inline-block w-3 h-3 bg-green-600 rounded-full mr-2"></span>
+                            <strong>Développeurs</strong>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-6 mb-8">
+                    <div class="card">
+                        <h3 class="text-xl font-bold mb-4">Bitcoin comme infrastructure sociotechnique</h3>
+                        <p class="mb-4">
+                            La thèse analyse Bitcoin comme une infrastructure sociotechnique complexe, et non simplement 
+                            comme une technologie ou une monnaie. Cette approche permet de comprendre comment le système 
+                            s'est développé à travers des interactions entre composants techniques et sociaux.
+                        </p>
+                        <div class="border-l-4 border-bitcoin pl-4 py-2 mb-4 bg-gray-50">
+                            <p class="italic">
+                                "La dimension «carnavalesque» de ce va-et-vient s'établit au-delà de la nature multi-acteurs 
+                                et multi-niveaux du développement infrastructurel : transgression, ironie, inversion sont au 
+                                cœur d'un développement infrastructurel qui conduit un système destiné à exclure les régulations 
+                                gouvernementales et les intermédiaires, à être de plus en plus régulé et intermédié."
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <h3 class="text-xl font-bold mb-4">Ethereum : rupture et continuité</h3>
+                        <p class="mb-4">
+                            Ethereum est analysé comme une infrastructure qui marque à la fois une rupture et une continuité 
+                            avec Bitcoin et les premiers Altcoins.
+                        </p>
+                        <ul class="list-disc pl-5 mb-4">
+                            <li><strong>Continuité</strong> : Utilisation de la blockchain et de certains principes de Bitcoin</li>
+                            <li><strong>Rupture</strong> : Introduction des smart contracts et d'un langage de programmation Turing-complet</li>
+                            <li><strong>Recompositions d'alliances</strong> : Contre les rigidités perçues de Bitcoin</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Monnaie -->
+        <section id="monnaie" class="py-12 bg-gray-100">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold mb-6 text-center">Le statut monétaire des cryptomonnaies</h2>
+                
+                <div class="card">
+                    <h3 class="text-2xl font-bold mb-4">Cartographie conceptuelle du débat</h3>
+                    <p class="mb-6">
+                        Cette visualisation interactive représente les différentes perspectives sur le statut des cryptomonnaies,
+                        illustrant le débat théorique présenté dans le Chapitre II de la thèse.
+                    </p>
+                    
+                    <div class="bg-white p-4 rounded-lg shadow overflow-auto">
+                        <div class="placeholder-viz">
+                            [Carte conceptuelle interactive]<br>
+                            Représentation des différentes perspectives théoriques sur le statut monétaire des cryptomonnaies :<br>
+                            monnaie, actif financier, technologie, phénomène social
+                        </div>
+                    </div>
+                    
+                    <div class="mt-6 text-sm text-gray-600 grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div>
+                            <span class="inline-block w-3 h-3 bg-bitcoin rounded-full mr-2"></span>
+                            <strong>Monnaie</strong>
+                        </div>
+                        <div>
+                            <span class="inline-block w-3 h-3 bg-red-600 rounded-full mr-2"></span>
+                            <strong>Actif financier</strong>
+                        </div>
+                        <div>
+                            <span class="inline-block w-3 h-3 bg-green-600 rounded-full mr-2"></span>
+                            <strong>Technologie</strong>
+                        </div>
+                        <div>
+                            <span class="inline-block w-3 h-3 bg-ethereum rounded-full mr-2"></span>
+                            <strong>Phénomène social</strong>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-6 mb-8">
+                    <div class="card">
+                        <h3 class="text-xl font-bold mb-4 text-red-600">Arguments contre le caractère monétaire</h3>
+                        <p class="mb-4">
+                            La thèse présente les principaux arguments contre la reconnaissance des cryptomonnaies comme monnaie :
+                        </p>
+                        <ul class="list-disc pl-5 mb-4 space-y-2">
+                            <li><span class="font-bold">Critiques instrumentales</span> : Les CM ne rempliraient pas les fonctions monétaires canoniques</li>
+                            <li><span class="font-bold">Critiques nominalistes</span> : La monnaie serait une "créature de l'État", ce que les CM ne sont pas</li>
+                            <li><span class="font-bold">Difficultés de qualification</span> : Les CM seraient des "monstres monétaires" difficilement qualifiables</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="card">
+                        <h3 class="text-xl font-bold mb-4 text-green-600">Arguments pour le caractère monétaire</h3>
+                        <p class="mb-4">
+                            Face à ces critiques, la thèse propose une approche institutionnaliste qui reconnaît le caractère monétaire des CM :
+                        </p>
+                        <ul class="list-disc pl-5 mb-4 space-y-2">
+                            <li><span class="font-bold">Institutionnalisme Monétaire</span> : Un nominalisme non étatique, apte à contenir les CM</li>
+                            <li><span class="font-bold">Au-delà de la monnaie, l'argent</span> : Questionner la monétisation à l'aune des usages réels</li>
+                            <li><span class="font-bold">La monnaie comme système de paiement</span> : Monétisation et liquidité de dettes hétérogènes</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Gouvernance -->
+        <section id="gouvernance" class="py-12 bg-white">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold mb-6 text-center">La gouvernance discrète des cryptomonnaies</h2>
+                
+                <div class="card">
+                    <h3 class="text-2xl font-bold mb-4">Visualisation des crises de gouvernance</h3>
+                    <p class="mb-6">
+                        Cette visualisation interactive représente les principales crises qui ont révélé la gouvernance 
+                        discrète des cryptomonnaies, basée sur l'analyse présentée dans le Chapitre III de la thèse.
+                    </p>
+                    
+                    <div class="bg-white p-4 rounded-lg shadow overflow-auto">
+                        <div class="placeholder-viz">
+                            [Visualisation des crises de gouvernance]<br>
+                            Représentation des crises majeures des cryptomonnaies entre 2009 et 2020,<br>
+                            avec leur sévérité et impact sur la gouvernance
+                        </div>
+                    </div>
+                    
+                    <div class="mt-6 text-sm text-gray-600 grid grid-cols-3 gap-4">
+                        <div>
+                            <span class="inline-block w-3 h-3 bg-bitcoin rounded-full mr-2"></span>
+                            <strong>Crises Bitcoin</strong>
+                        </div>
+                        <div>
+                            <span class="inline-block w-3 h-3 bg-ethereum rounded-full mr-2"></span>
+                            <strong>Crises Ethereum</strong>
+                        </div>
+                        <div>
+                            <span class="inline-block w-3 h-3 bg-accent rounded-full mr-2"></span>
+                            <strong>Autres crises</strong>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-6 mb-8">
+                    <div class="card">
+                        <h3 class="text-xl font-bold mb-4 text-accent">Les crises comme révélateurs</h3>
+                        <p class="mb-4">
+                            La thèse analyse comment les crises servent de révélateurs de la gouvernance réelle des cryptomonnaies :
+                        </p>
+                        <div class="p-4 bg-gray-50 rounded mb-4">
+                            <blockquote class="italic border-l-4 border-accent pl-4">
+                                "En 2018, « le monde du Bitcoin a été surpris » d'apprendre qu'un bogue critique nommé 
+                                « Bitcoin CVE 2018 #17144 », venait d'être corrigé en secret. La surprise tenait au fait 
+                                que le réel mettait ainsi à l'épreuve les prétentions monétaires libérales technicistes 
+                                des coiners* qui font de Bitcoin une monnaie naturellement saine et incorruptible."
+                            </blockquote>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <h3 class="text-xl font-bold mb-4 text-accent">La tension "Code is law"</h3>
+                        <p class="mb-4">
+                            La thèse explore la tension entre l'idéal "Code is law" et la réalité des interventions humaines :
+                        </p>
+                        <div class="p-4 bg-gray-50 rounded mb-4">
+                            <blockquote class="italic text-sm">
+                                "Donc voilà, 'don't trust verify', ben oui, il ne faut pas truster, il faut vérifier. 'Code is law', 
+                                là par contre au fur et à mesure du temps, au début j'étais dans ce côté-là, en effet : ben si le code 
+                                dit cela, il va se passer cela. [...] avec le temps, [...] je me dis qu'il y a quand même un consensus social. 
+                                'Code is law', as long as people don't mind."
+                            </blockquote>
+                            <p class="text-right text-xs mt-2">- A. Le Calvez, Entretien n°20</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Ressources -->
+        <section id="ressources" class="py-12 bg-gray-100">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold mb-6 text-center">Ressources</h2>
+                
+                <div class="grid md:grid-cols-2 gap-6 mb-8">
+                    <div class="card">
+                        <h3 class="text-xl font-bold mb-4">Glossaire</h3>
+                        <div class="space-y-4">
+                            <div class="border-b border-gray-200 pb-3">
+                                <h4 class="font-bold">CM (Cryptomonnaies)</h4>
+                                <p>Monnaies numériques utilisant la cryptographie pour sécuriser les transactions et contrôler la création de nouvelles unités.</p>
+                            </div>
+                            
+                            <div class="border-b border-gray-200 pb-3">
+                                <h4 class="font-bold">UCN</h4>
+                                <p>Unités de Compte Numériques, les unités de valeur utilisées dans les systèmes de cryptomonnaies comme le BTC (Bitcoin) ou l'ETH (Ethereum).</p>
+                            </div>
+                            
+                            <div class="border-b border-gray-200 pb-3">
+                                <h4 class="font-bold">Blockchain</h4>
+                                <p>Registre distribué et immuable qui enregistre les transactions dans un réseau de cryptomonnaie.</p>
+                            </div>
+                            
+                            <div class="border-b border-gray-200 pb-3">
+                                <h4 class="font-bold">Coiners</h4>
+                                <p>Terme utilisé dans la thèse pour désigner les utilisateurs et partisans des cryptomonnaies.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <h3 class="text-xl font-bold mb-4">Références bibliographiques</h3>
+                        <div class="space-y-4 text-sm">
+                            <div class="border-b border-gray-200 pb-3">
+                                <p>Nakamoto, S. (2008). Bitcoin: A Peer-to-Peer Electronic Cash System.</p>
+                            </div>
+                            
+                            <div class="border-b border-gray-200 pb-3">
+                                <p>Buterin, V. (2013). Ethereum Whitepaper: A Next-Generation Smart Contract and Decentralized Application Platform.</p>
+                            </div>
+                            
+                            <div class="border-b border-gray-200 pb-3">
+                                <p>Maurer, B., Nelms, T. C., & Swartz, L. (2013). "When perhaps the real problem is money itself!": the practical materiality of Bitcoin. Social Semiotics, 23(2), 261-277.</p>
+                            </div>
+                            
+                            <div class="border-b border-gray-200 pb-3">
+                                <p>Awemany (2018). The bug heard around the world: The story of CVE-2018-17144.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h3 class="text-xl font-bold mb-4">À propos de ce site</h3>
+                    <p class="mb-4">
+                        Ce site web interactif a été créé pour visualiser et explorer les connaissances et faits historiques 
+                        sur les cryptomonnaies présentés dans une thèse de recherche.
+                    </p>
+                    <p class="mb-4">
+                        Il vise à rendre accessibles les analyses complexes sur l'infrastructure sociotechnique, 
+                        le statut monétaire et la gouvernance des cryptomonnaies, en particulier Bitcoin et Ethereum.
+                    </p>
+                    <p>
+                        Les visualisations interactives permettent d'explorer les chronologies et les relations 
+                        entre les différents concepts et acteurs de cet écosystème en constante évolution.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-800 text-white py-6">
+        <div class="container mx-auto px-4">
+            <p>© 2025 - Site web interactif sur les cryptomonnaies</p>
+        </div>
+    </footer>
+</body>
+</html>
